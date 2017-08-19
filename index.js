@@ -37,9 +37,21 @@ app.post('/webhook', function(req, res) {
       if (message.message) {
         // If user send text
         if (message.message.text) {
-          var text = message.message.text;
+            switch(message.message.text) {
+                case 'tuấn':
+                    var text = 'Tuấn củ lìn'
+                    break;
+                case 'mỹ':
+                    var text = 'Mỹ đê tiện'
+                    break;
+                case 'mỹ':
+                    var text = 'Tài nhớt'
+                    break;
+                default:
+                     var text = 'Nhập tên mày vào'
+            }
           console.log(text); // In tin nhắn người dùng
-          sendMessage(senderId, "Tui là bot đây: " + text);
+          sendMessage(senderId, text);
         }
       }
     }
