@@ -51,7 +51,10 @@ app.post('/webhook', function(req, res) {
                     var text = 'Thắng đại ca'
                     break;
                 case 'xin link':
-                    var text = '<p>http://www.petalia.org/Funpage/girlxinh.htm</p><p>https://drive.google.com/drive/folders/0Bz1ccpxclii5YWlzOTRLc21BTzA</p><p>https://drive.google.com/drive/folders/0B2AAeRw_YBuTVHJnNFg1ejVmNFU</p>'
+                    var text = 'http://www.petalia.org/Funpage/girlxinh.htm\
+                                https://drive.google.com/drive/folders/0Bz1ccpxclii5YWlzOTRLc21BTzA\
+                                https://drive.google.com/drive/folders/\
+                                https://www.flickr.com/photos/130552237@N04/'
                     break;
                 default:
                      var text = 'Nhập tên mày vào'
