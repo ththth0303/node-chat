@@ -50,6 +50,11 @@ app.post('/webhook', function(req, res) {
                 case 'thắng':
                     var text = 'Thắng đại ca'
                     break;
+                case 'xin link':
+                    var text = 'http://www.petalia.org/Funpage/girlxinh.htm\
+                                https://drive.google.com/drive/folders/0Bz1ccpxclii5YWlzOTRLc21BTzA\
+                                https://drive.google.com/drive/folders/0B2AAeRw_YBuTVHJnNFg1ejVmNFU'
+                    break;
                 default:
                      var text = 'Nhập tên mày vào'
             }
