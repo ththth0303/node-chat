@@ -1,16 +1,16 @@
-var logger = require('morgan');
+// var logger = require('morgan');
 var http = require('http');
-var bodyParser = require('body-parser');
+// var bodyParser = require('body-parser');
 var express = require('express');
-var request = require('request');
-var router = express();
+// var request = require('request');
+// var router = express();
 
 var app = express();
-app.use(logger('dev'));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({
-  extended: false
-}));
+// app.use(logger('dev'));
+// app.use(bodyParser.json());
+// app.use(bodyParser.urlencoded({
+//   extended: false
+// }));
 var server = http.createServer(app);
 
 
