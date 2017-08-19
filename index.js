@@ -21,7 +21,7 @@ app.get('/', (req, res) => {
 
 // Đây là đoạn code để tạo Webhook
 app.get('/webhook', function(req, res) {
-  if (req.query['hub.verify_token'] === 'ma_xac_minh_cua_ban') {
+  if (req.query['hub.verify_token'] === 'anhthang') {
     res.send(req.query['hub.challenge']);
   }
   res.send('Error, wrong validation token');
@@ -54,7 +54,7 @@ function sendMessage(senderId, message) {
   request({
     url: 'https://graph.facebook.com/v2.6/me/messages',
     qs: {
-      access_token: "token",
+      access_token: "EAAKzXGjY5SoBAEd79lHykOP4art76QOTgU5xPkFu8eZAxUkUOTtnWPsJoKYTGcnY3FI8xDgghiZAoQyoFjnu7mBVAYQE3mjmKqPLEny3gmBIbdFeRjVMHmFH7y7TriwCtakUbilaKjZAofRjYFe9LjphPh5XqDKvlEAt7In0PEs95D6YZBoy",
     },
     method: 'POST',
     json: {
