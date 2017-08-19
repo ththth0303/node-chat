@@ -30,7 +30,7 @@ app.post('/webhook', function(req, res) {
   //     }
   //   }
   // }
- console.log(req.body)
+ console.log(req)
  // sendMessage(senderId, "Tui là bot đây: " + text);
  //  //       }
   res.status(200).send("OK");
