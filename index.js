@@ -1,21 +1,9 @@
-vvar logger = require('morgan');
-var http = require('http');
-var bodyParser = require('body-parser');
 var express = require('express');
-var router = express();
-
 var app = express();
-app.use(logger('dev'));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({
-  extended: false
-}));
-var server = http.createServer(app);
-var request = require("request");
 
-app.get('/', (req, res) => {
-  res.send("Home page. Server running okay.");
-});
+app.get('/', function (req, res) {
+   res.send('Hello World');
+})
 
 app.get('/webhook', function(req, res) {
   if (req.query['hub.verify_token'] === 'anhthang') {
@@ -26,22 +14,22 @@ app.get('/webhook', function(req, res) {
 
 // Xử lý khi có người nhắn tin cho bot
 app.post('/webhook', function(req, res) {
-  var entries = req.body.entry;
-  for (var entry of entries) {
-    var messaging = entry.messaging;
-    for (var message of messaging) {
-      var senderId = message.sender.id;
-      if (message.message) {
-        // If user send text
-        if (message.message.text) {
-          var text = message.message.text;
-          console.log(text); // In tin nhắn người dùng
-          sendMessage(senderId, "Tui là bot đây: " + text);
-        }
-      }
-    }
-  }
-
+  // var entries = req.body.entry;
+  // for (var entry of entries) {
+  //   var messaging = entry.messaging;
+  //   for (var message of messaging) {
+  //     var senderId = message.sender.id;
+  //     if (message.message) {
+  //       // If user send text
+  //       if (message.message.text) {
+  //         var text = message.message.text;
+  //         console.log(text); // In tin nhắn người dùng
+  //         sendMessage(senderId, "Tui là bot đây: " + text);
+  //       }
+  //     }
+  //   }
+  // }
+ console.log(req)
   res.status(200).send("OK");
 });
 
