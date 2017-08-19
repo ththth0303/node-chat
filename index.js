@@ -44,8 +44,11 @@ app.post('/webhook', function(req, res) {
                 case 'mỹ':
                     var text = 'Mỹ đê tiện'
                     break;
-                case 'mỹ':
+                case 'tài':
                     var text = 'Tài nhớt'
+                    break;
+                case 'thắng':
+                    var text = 'Thắng đại ca'
                     break;
                 default:
                      var text = 'Nhập tên mày vào'
