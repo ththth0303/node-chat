@@ -1,0 +1,22 @@
+{
+  "name": "botchat",
+  "version": "1.0.0",
+  "description": "begin",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ththth0303/botchat.git"
+  },
+  "author": "thangnt",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ththth0303/botchat/issues"
+  },
+  "homepage": "https://github.com/ththth0303/botchat#readme",
+  "dependencies": {
+    "express": "^4.15.4"
+  }
+}
