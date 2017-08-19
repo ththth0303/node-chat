@@ -6,7 +6,7 @@ app.get('/', function (req, res) {
 })
 
 app.get('/webhook', function(req, res) {
-  if (req.query['hub.verify_token'] === 'anh_hoang_dep_trai_vo_doi') {
+  if (req.query['hub.verify_token'] === 'anhthang') {
     res.send(req.query['hub.challenge']);
   }
   res.send('Error, wrong validation token');
