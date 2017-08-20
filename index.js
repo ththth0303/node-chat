@@ -11,7 +11,15 @@ app.use(bodyParser.urlencoded({
 }));
 
 var request = require("request");
-
+var dung = {
+  1: 'Dung dam dang',
+  2: 'Dung xinh đẹp',
+}
+  function getRandom(min, max) {
+    min = 1;
+    max = 2;
+    return Math.random() * (max - min) + min;
+}
 app.get('/', (req, res) => {
   res.send("Home page. Server running okay.");
 })
@@ -53,7 +61,7 @@ app.post('/webhook', function(req, res) {
                 case 'dinh dung':
                 case 'dinh thi dung':
                 case 'hip':
-                    var text = 'Dung dam dang'
+                    var text = dung[getRandom()]
                     break;
                 case 'xin link':
                     var text = 'http://www.petalia.org/Funpage/girlxinh.htm\
