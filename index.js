@@ -16,13 +16,11 @@ app.get('/', (req, res) => {
   res.send("Home page. Server running okay.");
 })
 
-
-
-
 // Đây là đoạn code để tạo Webhook
 app.get('/webhook', function(req, res) {
   if (req.query['hub.verify_token'] === 'anhthang') {
     res.send(req.query['hub.challenge']);
+    console.log(req)
   }
   res.send('Error, wrong validation token');
 });
@@ -48,7 +46,14 @@ app.post('/webhook', function(req, res) {
                     var text = 'Tài nhớt'
                     break;
                 case 'thắng':
+                case 'thang':
                     var text = 'Thắng đại ca'
+                    break;
+                case 'dung':
+                case 'dinh dung':
+                case 'dinh thi dung':
+                case 'hip':
+                    var text = 'Dung dam dang'
                     break;
                 case 'xin link':
                     var text = 'http://www.petalia.org/Funpage/girlxinh.htm\
@@ -57,7 +62,7 @@ app.post('/webhook', function(req, res) {
                                 https://www.flickr.com/photos/130552237@N04/'
                     break;
                 default:
-                     var text = 'Nhập tên mày vào'
+                     var text = 'Nhập tên bạn vào'
             }
           console.log(text); // In tin nhắn người dùng
           sendMessage(senderId, text);
