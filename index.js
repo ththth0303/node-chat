@@ -16,8 +16,6 @@ var dung = {
   2: 'Dung xinh đẹp',
 }
   function getRandom(min, max) {
-    min = 1;
-    max = 2;
     return Math.random() * (max - min) + min;
 }
 app.get('/', (req, res) => {
@@ -61,7 +59,7 @@ app.post('/webhook', function(req, res) {
                 case 'dinh dung':
                 case 'dinh thi dung':
                 case 'hip':
-                    var text = getRandom();
+                    var text = getRandom(1, 2);
                     text = dung[text]
                     break;
                 case 'xin link':
