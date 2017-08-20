@@ -76,6 +76,7 @@ app.post('/webhook', function(req, res) {
                 case 'dinh dung':
                 case 'dinh thi dung':
                 case 'hip':
+                case 'ha bang':
                     var text = getRandom(0, 1);
                     text = dung[text];
                     break;
