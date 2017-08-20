@@ -61,7 +61,8 @@ app.post('/webhook', function(req, res) {
                 case 'dinh dung':
                 case 'dinh thi dung':
                 case 'hip':
-                    var text = dung[getRandom()]
+                    var text = getRandom();
+                    text = dung[text]
                     break;
                 case 'xin link':
                     var text = 'http://www.petalia.org/Funpage/girlxinh.htm\
