@@ -37,7 +37,7 @@ app.post('/webhook', function(req, res) {
       if (message.message) {
         // If user send text
         if (message.message.text) {
-            switch(message.message.text) {
+            switch(message.message.text.toLowerCase()) {
                 case 'tuấn':
                     var text = 'Tuấn củ lìn'
                     break;
