@@ -14,12 +14,14 @@ var request = require("request");
 var dung = [
    'Dung dam dang',
   'Dung xinh đẹp',
+  '...',
 ]
 function getRandom(min, max) {
-    return Math.random() * (max - min) + min;
+    return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 app.get('/', (req, res) => {
-  res.send("Home page. Server running okay." + dung[1]);
+  var th = getRandom(0, 1);
+  res.send("Home page. Server running okay." + dung[th]);
 })
 
 // Đây là đoạn code để tạo Webhook
@@ -59,7 +61,7 @@ app.post('/webhook', function(req, res) {
                 case 'dinh dung':
                 case 'dinh thi dung':
                 case 'hip':
-                    var text = getRandom(0, 1);
+                    var text = getRandom(0, 2);
                     text = dung[text];
                     break;
                 case 'xin link':
@@ -111,5 +113,6 @@ function sendMessage(senderId, message) {
 var port = (process.env.OPENSHIFT_NODEJS_PORT || process.env.PORT || 6000);
 
 app.listen(port, function () {
-  console.log('Example app listening on port:' + port + dung[1])
+  var th = getRandom(0, 1);
+  console.log('Example app listening on port:' + port + dung[th])
 })
