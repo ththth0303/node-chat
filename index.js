@@ -57,12 +57,15 @@ app.post('/webhook', function(req, res) {
         if (message.message.text) {
             switch(convertTo(message.message.text)) {
                 case 'tuấn':
+                case 'tuan':
                     var text = 'Tuấn củ lìn'
                     break;
                 case 'mỹ':
+                case 'my':
                     var text = 'Mỹ đê tiện'
                     break;
                 case 'tài':
+                case 'tai':
                     var text = 'Tài nhớt'
                     break;
                 case 'thắng':
@@ -73,7 +76,7 @@ app.post('/webhook', function(req, res) {
                 case 'dinh dung':
                 case 'dinh thi dung':
                 case 'hip':
-                    var text = getRandom(0, 2);
+                    var text = getRandom(0, 1);
                     text = dung[text];
                     break;
                 case 'xin link':
