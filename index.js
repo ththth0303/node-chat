@@ -9,6 +9,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
   extended: false
 }));
+app.use(express.static('./public'))
 
 var request = require("request");
 var dung = [
@@ -16,6 +17,30 @@ var dung = [
   'Dung xinh đẹp',
   '...',
 ]
+
+var server = require('http').Server(app);
+var io = require('socket.io')(server);
+server.listen(6969);
+
+io.on('connection', function(socket){
+  var num = getRandom(0, 2);
+  console.log(socket.id + ': connected');
+  socket.on('disconnect', function(){
+    console.log(socket.id + ': disconnected')
+  })
+  socket.on('newTodo', data => {
+    io.sockets.emit('newTodo', data);
+    console.log(data);
+  })
+  socket.on('deleteTodo', data => {
+    io.sockets.emit('deleteTodo', data);
+    console.log(data);
+  })
+  socket.on('changeStatus', data => {
+    io.sockets.emit('changeStatus', data);
+    console.log(data);
+  })
+});
 
 function convertTo(str) {
         str = str.toLowerCase();
@@ -33,7 +58,7 @@ function getRandom(min, max) {
 }
 app.get('/', (req, res) => {
   var th = getRandom(0, 1);
-  res.send("Home page. Server running okay." + dung[th]);
+  res.send("Home page. Server running okay.");
 })
 
 // Đây là đoạn code để tạo Webhook
@@ -119,6 +144,7 @@ function sendMessage(senderId, message) {
   });
 }
 
+
 // app.set('port', process.env.OPENSHIFT_NODEJS_PORT || process.env.PORT || 6000);
 // app.set('ip', process.env.OPENSHIFT_NODEJS_IP || process.env.IP || "127.0.0.1");
 
@@ -126,9 +152,10 @@ function sendMessage(senderId, message) {
 //   console.log("Chat bot server listening at %s:%d ", app.get('ip'), app.get('port'));
 // });
 
-var port = (process.env.OPENSHIFT_NODEJS_PORT || process.env.PORT || 6000);
+// var port = (process.env.OPENSHIFT_NODEJS_PORT || process.env.PORT || 6000);
+// var port = 6969;
 
-app.listen(port, function () {
-  var th = getRandom(0, 1);
-  console.log('Example app listening on port:' + port + dung[th])
-})
+// app.listen(port, function () {
+//   var th = getRandom(0, 1);
+//   console.log('Example app listening on port:' + port + dung[th])
+// })
