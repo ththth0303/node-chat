@@ -19,13 +19,15 @@ var dung = [
 ]
 
 var server = require('http').Server(app);
-var port = (process.env.OPENSHIFT_NODEJS_PORT || process.env.PORT || 6000);
+var port = (process.env.OPENSHIFT_NODEJS_PORT || process.env.PORT || 6969);
 var io = require('socket.io')(server);
-server.listen(post);
+server.listen(port);
 
 io.on('connection', function(socket){
   var num = getRandom(0, 2);
   console.log(socket.id + ': connected');
+  socket.emit('id', socket.id);
+
   socket.on('disconnect', function(){
     console.log(socket.id + ': disconnected')
   })
@@ -40,6 +42,17 @@ io.on('connection', function(socket){
   socket.on('changeStatus', data => {
     io.sockets.emit('changeStatus', data);
     console.log(data);
+  })
+  socket.on('newMessage', data => {
+    io.sockets.emit('newMessage', {data: data, id: socket.id});
+    console.log(data);
+  })
+
+  socket.on('startTyping', () => {
+    socket.broadcast.emit('startTyping', {typing: true});
+    setTimeout(function () {
+          socket.broadcast.emit('stopTyping', {typing: false});
+      }, 1000);
   })
 });
 
