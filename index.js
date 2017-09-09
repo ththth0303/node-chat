@@ -19,8 +19,9 @@ var dung = [
 ]
 
 var server = require('http').Server(app);
+var port = (process.env.OPENSHIFT_NODEJS_PORT || process.env.PORT || 6000);
 var io = require('socket.io')(server);
-server.listen(6969);
+server.listen(post);
 
 io.on('connection', function(socket){
   var num = getRandom(0, 2);
